@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
-struct FamilyMember {
+struct Family {
     let name: String?
     let relation: String?
     let bio: String?
+    let image: UIImage?
 }
