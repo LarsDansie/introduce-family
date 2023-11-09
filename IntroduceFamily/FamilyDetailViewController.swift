@@ -16,7 +16,7 @@ class FamilyDetailViewController: UIViewController {
     @IBOutlet weak var bioLabel: UILabel!
     @IBOutlet weak var familyImageView: UIImageView!
     
-    var familyMember: Family?
+    var familyMember: FamilyMember?
 
 
 

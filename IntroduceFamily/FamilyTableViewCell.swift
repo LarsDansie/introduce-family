@@ -16,15 +16,15 @@ class FamilyTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        familyImageView.layer.cornerRadius = familyImageView.frame.height / 2
     }
     
+    func update(with familyMember: FamilyMember) {
+        nameLabel.text = familyMember.name
+        relationLabel.text = familyMember.relation
+        familyImageView.image = familyMember.image
+//        cell.bioLabel.text = familyMember.bio
+        familyImageView.layer.cornerRadius = familyImageView.frame.height / 2
+    }
     
-   
 }

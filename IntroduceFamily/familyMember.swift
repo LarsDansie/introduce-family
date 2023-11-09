@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct Family {
+struct FamilyMember {
     let name: String?
     let relation: String?
     let bio: String?

@@ -6,7 +6,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var familyTableView: UITableView!
     
 
-    var familyMembers = [Family]()
+    var familyMembers = [FamilyMember]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +16,8 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
 
         familyTableView.dataSource = self
         familyTableView.delegate = self
+        familyTableView.separatorStyle = .none
+        familyTableView.showsVerticalScrollIndicator = false
         
     }
     
@@ -28,7 +30,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FamilyDetailSegue", let familyDetailVC = segue.destination as? FamilyDetailViewController {
-            if let selectedFamilyMember = sender as? Family {
+            if let selectedFamilyMember = sender as? FamilyMember {
                 familyDetailVC.familyMember = selectedFamilyMember
             }
         }
@@ -47,17 +49,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: "familyCell", for: indexPath) as! FamilyTableViewCell
 
         let familyMember = familyMembers[indexPath.row]
-        cell.nameLabel.text = familyMember.name
-        cell.relationLabel.text = familyMember.relation
-        cell.familyImageView.image = familyMember.image
-//        cell.bioLabel.text = familyMember.bio
-        familyTableView.separatorStyle = .none
-        familyTableView.showsVerticalScrollIndicator = false
-        
-        
-        cell.familyView.layer.cornerRadius = cell.familyView.frame.height / 5
-        cell.familyImageView.layer.cornerRadius = cell.familyImageView.frame.height / 2
-        
+        cell.update(with: familyMember)
 
         return cell
     }
